@@ -66,3 +66,27 @@ const logoutBtn = document.getElementById("logoutBtn");
 logoutBtn.addEventListener("click", handleLogout);
 
 /******************** Finish logout ************* */
+
+/******************* Video Call begin **********  */
+
+function handleNewMeeting() {
+    const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
+    window.open(`videocall.html?username=${connectedUser.username}`, "_blank");
+}
+
+// Attach the handleNewMeeting function to the "Create a New Meeting" button
+const newMeetingBtn = document.getElementById("newMeetingBtn");
+newMeetingBtn.addEventListener("click", handleNewMeeting);
+
+
+function handleJoinMeeting() {
+    const roomId = document.getElementById("meetingName").value;
+    const connectedUser = JSON.parse(localStorage.getItem('connectedUser'));
+
+    const url = `videocall.html?roomID=${roomId}&username=${connectedUser.username}`;
+
+    window.open(url, "_blank");
+}
+
+const joinMeetingBtn = document.getElementById("joinMeetingBtn");
+joinMeetingBtn.addEventListener("click", handleJoinMeeting);
